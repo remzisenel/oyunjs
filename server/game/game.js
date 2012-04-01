@@ -39,24 +39,20 @@ function matchUsers(extension)
     var maxPlayers = extensions[extension].maxPlayers;
     var players = [];
     var playerCount = 0;
-    console.log('matchUsers users.len: ' + users.length);
     for(var i=0;i<users.length;i++)
     {
         if(users[i].extension == extension)
         {
-            console.log('matched!: ' + users.length);
             players[players.length] = users[i];   
             playerCount++;
         }
         if(playerCount == maxPlayers)
         {
-            console.log('enough match');
             var roomKey = room.initGame(players, extension);
-            console.log('created room roomKey:' + roomKey);
             for(var j=0;j<players.length;j++)
             {
-                console.log('adding to feed userid: ' + players[j].gameUserId);
                 user.addToUserFeed(players[j].gameUserId, 'START', roomKey, 'You have joined a game!');  
+                if(j==0) user.addToUserFeed(players[j].gameUserId, 'TURN', roomKey, '');    
             }
             playerCount = 0;
             players = [];

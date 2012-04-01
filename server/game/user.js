@@ -47,7 +47,6 @@ function removeUser(userId)
 
 function addUser(accountId, extension, status)
 {
-    console.log("adduser called: " + accountId + ',' + extension + ',' + status);
     // save user
     var index = users.length;
     users[index] = {};
@@ -131,7 +130,6 @@ function tick()
 {
     for(var i=0;i<users.length;i++)
     {
-        console.log('online user'+i+': ' + users[i].gameUserId);
         users[i].tickCount++;
         if(users[i].tickCount == maxTick)
         {
@@ -145,18 +143,13 @@ function tick()
 function getUsersWaitingRandomMatch()
 {
     var res = [];
-    console.log('users len: ' + users.length);
     for(var i=0;i<users.length;i++)
     {
-        console.log('i value: ' + i);
-        console.log('i users[i].status: ' + users[i].status);
         if(users[i].status == 'lfrandom')
         {
-            console.log('added in pos: ' + res.length);
             res[res.length] = users[i];
         }
     }
-    console.log('return len: ' + res.length);
     return res;   
 }
 
