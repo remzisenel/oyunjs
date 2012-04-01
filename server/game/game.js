@@ -65,6 +65,7 @@ function matchUsers(extension)
 function login(accountId, extension, status)
 {
     var res = user.login(accountId, extension, status);
+    if(res && status == 'lfrandom') matchUsers(extension);
     return res;
 }
 
@@ -132,8 +133,6 @@ function tick()
     if(user.getUsersWaitingRandomMatch().length > 0) matchUsers();
     setTimeout(function(){tick();},ticktimer);    
 }
-
-tick();
 
 exports.playTurn = playTurn;
 exports.getUserFeed = getUserFeed;
