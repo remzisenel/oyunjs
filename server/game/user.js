@@ -145,6 +145,7 @@ function tick()
 function getUsersWaitingRandomMatch()
 {
     var res = [];
+    console.log('users len: ' + users.length);
     for(var i=0;i<users.length;i++)
     {
         if(users[i].status == 'lfrandom')
