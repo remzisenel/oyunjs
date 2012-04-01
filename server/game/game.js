@@ -45,7 +45,11 @@ function matchUsers(extension)
         }
         if(playerCount == maxPlayers)
         {
-            room.initGame(players, extension);
+            var roomKey = room.initGame(players, extension);
+            for(var j=0;j<players.length;j++)
+            {
+                user.addToUserFeed(players[j].gameUserId, 'START', roomKey, 'You have joined a game!');  
+            }
             playerCount = 0;
             players = [];
         }

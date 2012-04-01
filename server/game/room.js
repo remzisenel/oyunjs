@@ -49,6 +49,7 @@ function initGame(players, extension)
     
     rooms["gr_"+roomKey] = room;
     roomKeys[roomKeys.length] = roomKey;
+    return roomKey;
 }
 
 function generateRoomKey()
@@ -84,7 +85,7 @@ function tick()
 {
     for(var i=0;i<roomKeys.length;i++)
     {
-        if(rooms[roomKeys[i]].gameState == 'halt')
+        if(rooms[roomKeys[i]] && rooms[roomKeys[i]].gameState == 'halt')
         {
             rooms[roomKeys[i]].tick++;
             if(rooms[roomKeys[i]].tick == maxTick)
