@@ -148,6 +148,7 @@ function getUsersWaitingRandomMatch()
     console.log('users len: ' + users.length);
     for(var i=0;i<users.length;i++)
     {
+        console.log('i value: ' + i);
         if(users[i].status == 'lfrandom')
         {
             res[res.length] = users[i];
