@@ -25,10 +25,12 @@ var settings = require("../conf/conf").conf;
 var ticktimer = settings.mm_tick_timer;
 var ext_extList = settings.extList;
 var ext_extensions = settings.extensions;
+var ticking = {};
 var extensions = {};
 for(var ext_i = 0;ext_i<ext_extList.length;ext_i++)
 {
     extensions[ext_extList[ext_i]] = require("../"+ext_extensions[ext_extList[ext_i]]);
+    ticking[ext_extList[ext_i]] = false;
 }
 
 function matchUsers(extension)
@@ -60,6 +62,7 @@ function matchUsers(extension)
             players = [];
         }
     }
+    if(!ticking[extension]) tick(extension);
 }
 
 function login(accountId, extension, status)
@@ -128,10 +131,10 @@ function playTurn(userId, roomKey, turn)
 
 }
 
-function tick()
+function tick(extension)
 {
-    matchUsers();
-    setTimeout(function(){tick();},ticktimer);    
+    matchUsers(extension);
+    setTimeout(function(){tick(extension);},ticktimer);    
 }
 
 tick();
