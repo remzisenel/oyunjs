@@ -10,7 +10,9 @@ var conf = {
     "extensions"            : {
                                 "ttt"  : 'extensions/tictactoe.js'
                             },
-
+                            
+    // matchMaking settings
+    "mm_tick_timer"         : 5000,
 
     // user settings
     "maximum_ticks_missed"  : 4,

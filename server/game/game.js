@@ -60,6 +60,7 @@ function matchUsers(extension)
             players = [];
         }
     }
+    tick();
 }
 
 function login(accountId, extension, status)
@@ -132,8 +133,6 @@ function tick()
     matchUsers();
     setTimeout(function(){tick();},ticktimer);    
 }
-
-tick();
 
 exports.playTurn = playTurn;
 exports.getUserFeed = getUserFeed;
