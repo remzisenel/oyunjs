@@ -130,6 +130,7 @@ function tick()
 {
     for(var i=0;i<users.length;i++)
     {
+        console.log('online user'+i+': ' + users[i].gameUserId);
         users[i].tickCount++;
         if(users[i].tickCount == maxTick)
         {
