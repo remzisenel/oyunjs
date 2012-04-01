@@ -56,7 +56,7 @@ function addUser(accountId, extension, status)
     users[index].extension = extension;
     users[index].lastFeedIndex = 0;
     users[index].feed = [];
-    setUserState(index,status);
+    users[index].status = status;
     return users[index].gameUserId;
 }
 
