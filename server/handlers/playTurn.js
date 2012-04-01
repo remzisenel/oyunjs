@@ -6,7 +6,7 @@ function playTurn(request, response, query, postData) {
   {
     var req = JSON.parse(postData.req);
     var res = {};
-    game.playTurn(req.roomKey, req.userId, req.turn);
+    game.playTurn(req.userId, req.roomKey, req.turn);
     res.status = 'success';
     response.write(JSON.stringify(res));    
   }
