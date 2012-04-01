@@ -133,6 +133,8 @@ function tick()
     setTimeout(function(){tick();},ticktimer);    
 }
 
+tick();
+
 exports.playTurn = playTurn;
 exports.getUserFeed = getUserFeed;
 exports.getRoom = getRoom;
