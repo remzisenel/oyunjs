@@ -60,7 +60,6 @@ function matchUsers(extension)
             players = [];
         }
     }
-    tick();
 }
 
 function login(accountId, extension, status)
@@ -130,7 +129,7 @@ function playTurn(userId, roomKey, turn)
 
 function tick()
 {
-    matchUsers();
+    if(user.getUsersWaitingRandomMatch().length > 0) matchUsers();
     setTimeout(function(){tick();},ticktimer);    
 }
 
