@@ -64,7 +64,7 @@ function matchUsers(extension)
 function login(accountId, extension, status)
 {
     var res = user.login(accountId, extension, status);
-    if(status == 'lfrandom') matchUsers(extension);
+    if(res && status == 'lfrandom') matchUsers(extension);
     return res;
 }
 
