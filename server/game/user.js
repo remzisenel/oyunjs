@@ -47,6 +47,7 @@ function removeUser(userId)
 
 function addUser(accountId, extension, status)
 {
+    console.log("adduser called: " + accountId + ',' + extension + ',' + status);
     // save user
     var index = users.length;
     users[index] = {};
