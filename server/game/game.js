@@ -51,6 +51,7 @@ function matchUsers(extension)
             var roomKey = room.initGame(players, extension);
             for(var j=0;j<players.length;j++)
             {
+                user.setUserState(players[j].gameUserId, 'in-game');
                 user.addToUserFeed(players[j].gameUserId, 'START', roomKey, 'You have joined a game!');  
                 if(j==0) user.addToUserFeed(players[j].gameUserId, 'TURN', roomKey, '');    
             }
