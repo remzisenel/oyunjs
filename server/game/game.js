@@ -130,9 +130,11 @@ function playTurn(userId, roomKey, turn)
 
 function tick()
 {
-    if(user.getUsersWaitingRandomMatch().length > 0) matchUsers();
+    matchUsers();
     setTimeout(function(){tick();},ticktimer);    
 }
+
+tick();
 
 exports.playTurn = playTurn;
 exports.getUserFeed = getUserFeed;
