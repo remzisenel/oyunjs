@@ -22,6 +22,7 @@ exports.getRoom = getRoom;
 var user = require("./user");
 var room = require("./room");
 var settings = require("../conf/conf").conf;
+var ticktimer = settings.mm_tick_timer;
 var ext_extList = settings.extList;
 var ext_extensions = settings.extensions;
 var extensions = {};
@@ -64,7 +65,6 @@ function matchUsers(extension)
 function login(accountId, extension, status)
 {
     var res = user.login(accountId, extension, status);
-    if(res && status == 'lfrandom') matchUsers(extension);
     return res;
 }
 
@@ -126,6 +126,14 @@ function playTurn(userId, roomKey, turn)
     
 
 }
+
+function tick()
+{
+    matchUsers();
+    setTimeout(function(){tick();},ticktimer);    
+}
+
+tick();
 
 exports.playTurn = playTurn;
 exports.getUserFeed = getUserFeed;
