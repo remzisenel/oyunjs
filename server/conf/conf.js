@@ -3,19 +3,23 @@ var conf = {
     
     
     // server configurations
-    "port" : 81,
+    "port" : process.env.C9_PORT || 81,
     
+    // extensions
+    "extList"               : ['ttt'],
+    "extensions"            : {
+                                "ttt"  : 'extensions/tictactoe.js'
+                            },
+
+
+    // user settings
+    "maximum_ticks_missed"  : 4,
+    "tick_timer"            : 20000, //ms // logs user out after (missed-1)*timer miliseconds
     
-    // game settings
-    "max_players_per_table" : 2,
-    "tick_timer"            : 2500,
+    // room settings
+    "room_maximum_ticks_missed"  : 4,
+    "room_tick_timer"            : 20000 //ms // removes room after (missed-1)*timer miliseconds
     
-    // db conf
-    "db_hostname"   : 'analyticsdb.ylocal.com',
-    "db_port"   : '3306',
-    "db_user"       : 'root',
-    "db_password"   : '12admin78',
-    "database"      : 'analytics'
 }
 
 exports.conf = conf;

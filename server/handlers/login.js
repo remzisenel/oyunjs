@@ -8,7 +8,7 @@ function login(request, response, query, postData) {
     var res = {};
     res.status = 'success';
     res.response = {};
-    res.response.userId = game.login(req.name);
+    res.response.userId = game.login(req.name, req.extension, req.status);
     response.write(JSON.stringify(res));    
   }
   response.end();

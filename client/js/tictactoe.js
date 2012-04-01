@@ -70,6 +70,8 @@ function initGS(fullname)
 	log('init gs connection');
 	var req = {};
 	req.name = fullname;
+    req.extension = 'ttt';
+    req.status = 'lfrandom';
 	$.post(serverurl+"login", { req: JSON.stringify(req) } , function(data) {
 		if(data.status == 'success')
 		{
