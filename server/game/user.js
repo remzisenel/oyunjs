@@ -152,6 +152,7 @@ function getUsersWaitingRandomMatch()
             res[res.length] = users[i];
         }
     }
+    console.log('return len: ' + res.length);
     return res;   
 }
 
