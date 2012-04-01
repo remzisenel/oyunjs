@@ -85,6 +85,7 @@ function tick()
 {
     for(var i=0;i<roomKeys.length;i++)
     {
+        console.log('online room'+i+': ' + roomKeys[i]);
         if(rooms[roomKeys[i]] && rooms[roomKeys[i]].gameState == 'halt')
         {
             rooms[roomKeys[i]].tick++;
