@@ -101,7 +101,7 @@ function getUserFeed(userId)
 function playTurn(userId, roomKey, turn)
 {
     var gameRoom = room.getRoom(roomKey);
-    var playTurnResponse = extensions[gameRoom.extension].playTurn(userId, gameRoom, turn);
+    var playTurnResponse = extensions[gameRoom.gameType].playTurn(userId, gameRoom, turn);
     if(playTurnResponse.result == 'success')
     {
         room.setGame(roomKey, playTurnResponse.game);
