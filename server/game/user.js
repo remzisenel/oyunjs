@@ -149,6 +149,7 @@ function getUsersWaitingRandomMatch()
     for(var i=0;i<users.length;i++)
     {
         console.log('i value: ' + i);
+        console.log('i users[i].status: ' + users[i].status);
         if(users[i].status == 'lfrandom')
         {
             console.log('added in pos: ' + res.length);
