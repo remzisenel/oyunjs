@@ -137,8 +137,6 @@ function tick(extension)
     setTimeout(function(){tick(extension);},ticktimer);    
 }
 
-tick();
-
 exports.playTurn = playTurn;
 exports.getUserFeed = getUserFeed;
 exports.getRoom = getRoom;
