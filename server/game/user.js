@@ -131,10 +131,8 @@ function tick()
     for(var i=0;i<users.length;i++)
     {
         users[i].tickCount++;
-        console.log(users[i].gameUserId +' tick count: '+ users[i].tickCount);
         if(users[i].tickCount == maxTick)
         {
-            console.log(users[i].gameUserId +' marked for death.');
             game.logout(users[i].gameUserId);
             //TODO: notify gameserver!
         }
