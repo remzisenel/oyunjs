@@ -107,6 +107,7 @@ function getUserFeed()
 
 function parseFeedActions()
 {
+    var endwait = false;
 	for(var i = lastActionFeedId+1;i<feed.length;i++)
 	{
 		if(feed[i].actionKey == 'START')
@@ -133,8 +134,14 @@ function parseFeedActions()
             var winnerUserId = feed[i].message;
 			setMessage('Game Over. Winner: ' + winnerUserId);
             disableControls();
+            endwait = true;
 		}
 		lastActionFeedId = i;
+        if(endwait)
+        {
+            setTimeout(function(){parseFeedActions()}, 1000);   
+            break;
+        }
 	}
 }
 
