@@ -115,7 +115,7 @@ function playTurn(userId, roomKey, turn)
             {
                 if(gameRoom.turnOWner == i)
                 {
-                    user.addToUserFeed(room.players[i].userId, 'TURN', roomKey, turn);    
+                    user.addToUserFeed(gameRoom.players[i].userId, 'TURN', roomKey, turn);    
                     break;
                 }
             }
@@ -124,8 +124,8 @@ function playTurn(userId, roomKey, turn)
         {
             for(var i=0;i<gameRoom.players.length;i++)
             {
-                user.addToUserFeed(room.players[i].userId, 'END', roomKey, userId);    
-                user.setUserState(room.players[i].userId, 'lfrandom');
+                user.addToUserFeed(gameRoom.players[i].userId, 'END', roomKey, userId);    
+                user.setUserState(gameRoom.players[i].userId, 'lfrandom');
             }
         }
     }
