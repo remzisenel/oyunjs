@@ -83,10 +83,12 @@ function logout(userId)
     console.log('logout called for: '+userId);
     var res = user.logout(userId);
     var roomKey = userIdRoomMap[userId];
+    console.log('roomKey: ' + roomKey);
     var gameRoom = room.getRoom(roomKey);
     room.setState(roomKey, 'halt');
     for(var i=0;i<gameRoom.players.length;i++)
     {
+        console.log('i: ' + i + ' gameRoom.players[i].userId: ' + gameRoom.players[i].userId);
         if(gameRoom.players[i].userId != userId)
         {
             user.addToUserFeed(gameRoom.players[i].userId, 'STATE', roomKey, gameRoom.game);    
