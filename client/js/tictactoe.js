@@ -141,7 +141,7 @@ function parseFeedActions()
             var winnerUserId = feed[i].message;
             if(winnerUserId > 0) setMessage('Game Over. Winner: ' + winnerUserId);
             else if(winnerUserId === 0) setMessage('Game Over. Tie.');
-            else if(winnerUserId == -1) setMessage('Opponent left.');
+            else if(winnerUserId == -1) setMessage('Opponent left. Looking for a new opponent.');
             disableControls();
             endwait = true;
 		}
