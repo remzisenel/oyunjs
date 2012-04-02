@@ -86,12 +86,12 @@ function tick()
     for(var i=0;i<roomKeys.length;i++)
     {
         console.log('online room'+i+': ' + roomKeys[i]);
-        console.log('online room'+i+' tick: ' + rooms[roomKeys[i]].tick);
-        console.log('online room'+i+' gameState: ' + rooms[roomKeys[i]].gameState);
-        if(rooms[roomKeys[i]] && rooms[roomKeys[i]].gameState == 'halt')
+        console.log('online room'+i+' tick: ' + rooms["gr_"+roomKeys[i]].tick);
+        console.log('online room'+i+' gameState: ' + rooms["gr_"+roomKeys[i]].gameState);
+        if(rooms["gr_"+roomKeys[i]] && rooms["gr_"+roomKeys[i]].gameState == 'halt')
         {
-            rooms[roomKeys[i]].tick++;
-            if(rooms[roomKeys[i]].tick == maxTick)
+            rooms["gr_"+roomKeys[i]].tick++;
+            if(rooms["gr_"+roomKeys[i]].tick == maxTick)
             {
                 removeRoom(i);
             }
