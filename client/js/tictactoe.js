@@ -116,6 +116,7 @@ function parseFeedActions()
 			log('game start received');
             room = feed[i].message;
             updateBoard();
+            updateUsers();
 			
 		}
 		if(feed[i].actionKey == 'TURN')
