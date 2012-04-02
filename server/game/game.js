@@ -61,11 +61,11 @@ function matchUsers(extension)
             players = [];
         }
     }
-    if(!ticking[extension]) 
+    /*if(!ticking[extension]) 
     {
         ticking[extension] = true;
         tick(extension);
-    }
+    }*/
 }
 
 function login(accountId, extension, status)

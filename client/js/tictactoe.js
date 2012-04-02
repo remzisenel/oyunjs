@@ -133,14 +133,15 @@ function parseFeedActions()
 		if(feed[i].actionKey == 'END')
 		{
             var winnerUserId = feed[i].message;
-			setMessage('Game Over. Winner: ' + winnerUserId);
+            if(winnerUserId > 0) setMessage('Game Over. Winner: ' + winnerUserId);
+            else setMessage('Game Over. Tie.');
             disableControls();
             endwait = true;
 		}
 		lastActionFeedId = i;
         if(endwait)
         {
-            setTimeout(function(){parseFeedActions()}, 2000);   
+            setTimeout(function(){parseFeedActions()}, 2500);   
             break;
         }
 	}
