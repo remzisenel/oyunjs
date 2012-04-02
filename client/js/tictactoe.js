@@ -183,12 +183,12 @@ function updateUsers()
 		$.post(serverurl+"getUser", { req: JSON.stringify(req) } , function(data) {
 			if(data.status == 'success')
 			{
-				if(players[0] == data.response.user.userId) 
-				{
+				if(players[0] == data.response.user.gameUserId) 
+				{ 
 					$('#nameTag0').show();
 					$('#nameTag0').html('X : ' + data.response.user.accountId + '<br>');
 				}
-				if(players[1] == data.response.user.userId)
+				if(players[1] == data.response.user.gameUserId)
 				{
 					$('#nameTag1').show();
 					$('#nameTag1').html('O : ' + data.response.user.accountId + '<br>');
