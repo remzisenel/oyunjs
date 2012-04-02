@@ -78,7 +78,7 @@ function addTurn(roomKey, turn)
 
 function setState(roomKey, state)
 {
-    rooms["gr_"+roomKey].gameState = state;
+    if(rooms["gr_"+roomKey]) rooms["gr_"+roomKey].gameState = state;
 }
 
 function tick()
