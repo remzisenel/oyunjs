@@ -80,6 +80,7 @@ function login(accountId, extension, status)
 
 function logout(userId)
 {
+    console.log('logout called for: '+userId);
     var res = user.logout(userId);
     var roomKey = userIdRoomMap[userId];
     var gameRoom = room.getRoom(roomKey);
