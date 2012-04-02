@@ -13,6 +13,7 @@ var initialState = {
 
 function playTurn(userId, gameRoom, turn)
 {
+    console.log("here1");
     var ptr = {}
     ptr.result = 'failed';
     var playerIndex;
@@ -23,8 +24,10 @@ function playTurn(userId, gameRoom, turn)
             playerIndex = i;
         }
     }
-    if(gameRoom.turnOwner == playerIndex && gameRoom.gameState == 'running' && actionValid(gameRoom.game,turn))
+    console.log("here2");
+    if(gameRoom.turnOwner == playerIndex && gameRoom.gameState == 'run' && actionValid(gameRoom.game,turn))
     {
+        console.log("here3");
         ptr.result = 'success';
         var mark = 'O';
         if(playerIndex % 2 === 0) mark = 'X';
@@ -34,6 +37,7 @@ function playTurn(userId, gameRoom, turn)
         else ptr.state = 'halt';
         
     }
+    console.log("here4");
     ptr.game = gameRoom.game;
     return ptr;
 
