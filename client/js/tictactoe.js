@@ -10,6 +10,12 @@ var players = [];
 
 $('#content').hide();
 
+$(window).unload(function() {
+    var req = {};
+	req.userId = userId;
+	$.post(serverurl+"logout", { req: JSON.stringify(req) });
+});
+
 //start('remzi');
 
 function start(name)
