@@ -150,6 +150,7 @@ function updateBoard()
 {
 	if(room) 
 	{
+        resetBoard();
 		for(var i=1;i<10;i++)
 		{
 			if(room.game['square'+i] != '') $('#square'+i).addClass('picked' + room.game['square'+i].toLowerCase());
