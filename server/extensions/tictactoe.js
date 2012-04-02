@@ -1,14 +1,18 @@
 var maxPlayers = 2;
-var initialState = {
-    "square1" : '',
-    "square2" : '',
-    "square3" : '',
-    "square4" : '',
-    "square5" : '',
-    "square6" : '',
-    "square7" : '',
-    "square8" : '',
-    "square9" : ''
+function initialState()
+{
+    var init = {
+        "square1" : '',
+        "square2" : '',
+        "square3" : '',
+        "square4" : '',
+        "square5" : '',
+        "square6" : '',
+        "square7" : '',
+        "square8" : '',
+        "square9" : ''
+    }
+    return init;
 }
 
 function playTurn(userId, gameRoom, turn)

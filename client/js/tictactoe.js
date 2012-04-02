@@ -114,8 +114,9 @@ function parseFeedActions()
 			log('game start received');
 			room = {};
 			room.roomKey = feed[i].param;
-			resetBoard();
-			updateRoom();
+            resetBoard();
+            updateRoom();
+			
 		}
 		if(feed[i].actionKey == 'TURN')
 		{
@@ -185,12 +186,12 @@ function updateUsers()
 				if(players[0] == data.response.user.userId) 
 				{
 					$('#nameTag0').show();
-					$('#nameTag0').html('X : ' + data.response.user.fullName + '<br>' + data.response.user.score);
+					$('#nameTag0').html('X : ' + data.response.user.accountId + '<br>');
 				}
 				if(players[1] == data.response.user.userId)
 				{
 					$('#nameTag1').show();
-					$('#nameTag1').html('O : ' + data.response.user.fullName + '<br>' + data.response.user.score);
+					$('#nameTag1').html('O : ' + data.response.user.accountId + '<br>');
 				}
 			}
 			else

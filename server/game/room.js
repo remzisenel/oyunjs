@@ -21,7 +21,7 @@ function restartGame(roomKey)
     room.turns = [];
     room.tick = 0;
     room.gameState = 'run';
-    room.game = extensions[room.gameType].initialState;
+    room.game = extensions[room.gameType].initialState();
     
     rooms["gr_"+roomKey] = room;
 }
@@ -45,7 +45,7 @@ function initGame(players, extension)
     room.turns = [];
     room.tick = 0;
     room.gameState = 'run';
-    room.game = extensions[room.gameType].initialState;
+    room.game = extensions[room.gameType].initialState();
     
     rooms["gr_"+roomKey] = room;
     roomKeys[roomKeys.length] = roomKey;
@@ -86,6 +86,8 @@ function tick()
     for(var i=0;i<roomKeys.length;i++)
     {
         console.log('online room'+i+': ' + roomKeys[i]);
+        console.log('online room'+i+' tick: ' + rooms[roomKeys[i]].tick);
+        console.log('online room'+i+' gameState: ' + rooms[roomKeys[i]].gameState);
         if(rooms[roomKeys[i]] && rooms[roomKeys[i]].gameState == 'halt')
         {
             rooms[roomKeys[i]].tick++;
