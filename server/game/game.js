@@ -91,6 +91,7 @@ function logout(userId)
         console.log('i: ' + i + ' gameRoom.players[i].userId: ' + gameRoom.players[i].userId);
         if(gameRoom.players[i].userId != userId)
         {
+            console.log('add to feed');
             user.addToUserFeed(gameRoom.players[i].userId, 'STATE', roomKey, gameRoom.game);    
             user.addToUserFeed(gameRoom.players[i].userId, 'END', -1);    
             user.setUserState(gameRoom.players[i].userId, 'lfrandom');
