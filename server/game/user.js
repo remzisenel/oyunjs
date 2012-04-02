@@ -133,7 +133,7 @@ function tick()
         users[i].tickCount++;
         if(users[i].tickCount == maxTick)
         {
-            game.logout(users[i].userId);
+            game.logout(users[i].gameUserId);
             //TODO: notify gameserver!
         }
     }   
