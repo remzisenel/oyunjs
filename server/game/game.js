@@ -104,6 +104,7 @@ function playTurn(userId, roomKey, turn)
     var playTurnResponse = extensions[gameRoom.gameType].playTurn(userId, gameRoom, turn);
     if(playTurnResponse.result == 'success')
     {
+        console.log('playTurnResponse: ' + JSON.stringify(playTurnResponse));
         room.setGame(roomKey, playTurnResponse.game);
         room.addTurn(roomKey, turn);
         room.setState(roomKey, playTurnResponse.state);
