@@ -139,7 +139,7 @@ function parseFeedActions()
 		lastActionFeedId = i;
         if(endwait)
         {
-            setTimeout(function(){parseFeedActions()}, 1000);   
+            setTimeout(function(){parseFeedActions()}, 2000);   
             break;
         }
 	}
