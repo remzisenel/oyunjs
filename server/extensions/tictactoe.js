@@ -37,7 +37,7 @@ function playTurn(userId, gameRoom, turn)
         if(winner === -1) ptr.state = 'run';
         else ptr.state = 'halt';
         if(winner == 3) ptr.winner = 0;
-        else if(winner > -1) ptr.winner = gameRoom.players[winner];
+        else if(winner > -1) ptr.winner = gameRoom.players[winner].userId;
         
     }
     ptr.game = gameRoom.game;
