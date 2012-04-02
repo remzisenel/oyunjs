@@ -51,9 +51,11 @@ function matchUsers(extension)
             var roomKey = room.initGame(players, extension);
             for(var j=0;j<players.length;j++)
             {
+                var gameRoom = room.getRoom(roomKey);
                 user.setUserState(players[j].gameUserId, 'in-game');
-                user.addToUserFeed(players[j].gameUserId, 'START', roomKey, 'You have joined a game!');  
-                if(j==0) user.addToUserFeed(players[j].gameUserId, 'TURN', roomKey, '');    
+                user.addToUserFeed(players[j].gameUserId, 'START', roomKey, gameRoom);  
+                user.addToUserFeed(players[j].gameUserId, 'STATE', roomKey, gameRoom.game);  
+                if(j==gameRoom.turnOwner) user.addToUserFeed(players[j].gameUserId, 'TURN', roomKey, '{}');
             }
             playerCount = 0;
             players = [];
@@ -113,10 +115,11 @@ function playTurn(userId, roomKey, turn)
         {
             for(var i=0;i<gameRoom.players.length;i++)
             {
+                user.addToUserFeed(gameRoom.players[i].userId, 'STATE', roomKey, gameRoom.game);    
                 if(gameRoom.turnOwner == i)
                 {
-                    user.addToUserFeed(gameRoom.players[i].userId, 'TURN', roomKey, turn);    
-                    break;
+                    
+                    user.addToUserFeed(gameRoom.players[i].userId, 'TURN', roomKey, '{}');    
                 }
             }
         }
@@ -124,7 +127,8 @@ function playTurn(userId, roomKey, turn)
         {
             for(var i=0;i<gameRoom.players.length;i++)
             {
-                user.addToUserFeed(gameRoom.players[i].userId, 'END', roomKey, userId);    
+                user.addToUserFeed(gameRoom.players[i].userId, 'STATE', roomKey, gameRoom.game);    
+                user.addToUserFeed(gameRoom.players[i].userId, 'END', roomKey, playTurnResponse.winner);    
                 user.setUserState(gameRoom.players[i].userId, 'lfrandom');
             }
         }

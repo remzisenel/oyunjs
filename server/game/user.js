@@ -16,7 +16,7 @@ var lastUserId = 1;
             - feedId
             - actionKey
             - param
-            - text
+            - message
             - status
             - tickCount
 */
@@ -73,7 +73,7 @@ function logout(userId)
     return true;
 }
 
-function addToUserFeed(userId, actionKey, param, text)
+function addToUserFeed(userId, actionKey, param, message)
 {
     for(var i=0;i<users.length;i++)
     {
@@ -84,7 +84,7 @@ function addToUserFeed(userId, actionKey, param, text)
             users[i].feed[index].feedId = index;
             users[i].feed[index].actionKey = actionKey;
             users[i].feed[index].param = param;
-            users[i].feed[index].text = text;
+            users[i].feed[index].message = message;
             users[i].feed[index].status = 'new';
             break;
         }

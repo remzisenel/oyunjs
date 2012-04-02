@@ -55,10 +55,11 @@ function picked(elm)
 			{
 				disableControls();
 				setMessage('Waiting for opponent...');
-				updateRoom();
 			}
 			else
 			{
+                enableControls();
+                setMessage('Error sending turn, try again');
 				log('ERROR: status != success');
 			}
 		});
@@ -112,24 +113,26 @@ function parseFeedActions()
 		{
 			setMessage('Joined Room');
 			log('game start received');
-			room = {};
-			room.roomKey = feed[i].param;
-            resetBoard();
-            updateRoom();
+            room = feed[i].message;
+            updateBoard();
 			
 		}
 		if(feed[i].actionKey == 'TURN')
 		{
 			setMessage('Your Turn');
 			log('turn received');
-			updateRoom();
-			enableControls();
+            enableControls();
+		}
+        if(feed[i].actionKey == 'STATE')
+    	{
+            room.game = feed[i].message;
+            updateBoard();
 		}
 		if(feed[i].actionKey == 'END')
 		{
-			setMessage(feed[i].text);
-			updateBoard();
-			alert(feed[i].text);
+            var winnerUserId = feed[i].message;
+			setMessage('Game Over. Winner: ' + winnerUserId);
+            disableControls();
 		}
 		lastActionFeedId = i;
 	}
@@ -154,7 +157,7 @@ function updateBoard()
 	}
 }
 
-function updateRoom()
+/*function updateRoom()
 {
 	var req = {};
 	req.roomKey = room.roomKey;
@@ -172,7 +175,7 @@ function updateRoom()
 			log('ERROR: status != success on getUserFeed');
 		}
 	});
-}
+}*/
 
 function updateUsers()
 {
