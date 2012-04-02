@@ -126,7 +126,7 @@ function parseFeedActions()
             enableControls();
 		}
         if(feed[i].actionKey == 'STATE')
-    	{
+        {
             room.game = feed[i].message;
             updateBoard();
 		}
@@ -134,14 +134,15 @@ function parseFeedActions()
 		{
             var winnerUserId = feed[i].message;
             if(winnerUserId > 0) setMessage('Game Over. Winner: ' + winnerUserId);
-            else setMessage('Game Over. Tie.');
+            else if(winnerUserId === 0) setMessage('Game Over. Tie.');
+            else if(winnerUserId == -1) setMessage('Opponent left.');
             disableControls();
             endwait = true;
 		}
 		lastActionFeedId = i;
         if(endwait)
         {
-            setTimeout(function(){parseFeedActions()}, 2500);   
+            setTimeout(function(){parseFeedActions();}, 2500);   
             break;
         }
 	}

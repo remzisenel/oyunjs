@@ -27,6 +27,8 @@ var ext_extList = settings.extList;
 var ext_extensions = settings.extensions;
 var ticking = {};
 var extensions = {};
+var userIdRoomMap = {};
+
 for(var ext_i = 0;ext_i<ext_extList.length;ext_i++)
 {
     extensions[ext_extList[ext_i]] = require("../"+ext_extensions[ext_extList[ext_i]]);
@@ -51,6 +53,7 @@ function matchUsers(extension)
             var roomKey = room.initGame(players, extension);
             for(var j=0;j<players.length;j++)
             {
+                userIdRoomMap[players[j].gameUserId] = roomKey;
                 var gameRoom = room.getRoom(roomKey);
                 user.setUserState(players[j].gameUserId, 'in-game');
                 user.addToUserFeed(players[j].gameUserId, 'START', roomKey, gameRoom);  
@@ -78,6 +81,18 @@ function login(accountId, extension, status)
 function logout(userId)
 {
     var res = user.logout(userId);
+    var roomKey = userIdRoomMap[userId];
+    var gameRoom = room.getRoom(roomKey);
+    room.setState(roomKey, 'halt');
+    for(var i=0;i<gameRoom.players.length;i++)
+    {
+        if(gameRoom.players[i].userId != userId)
+        {
+            user.addToUserFeed(gameRoom.players[i].userId, 'STATE', roomKey, gameRoom.game);    
+            user.addToUserFeed(gameRoom.players[i].userId, 'END', -1);    
+            user.setUserState(gameRoom.players[i].userId, 'lfrandom');
+        }
+    }
     return res;
 }
 
