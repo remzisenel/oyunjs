@@ -111,10 +111,15 @@ function playTurn(userId, roomKey, turn)
         console.log(JSON.stringify(gameRoom));
         if(playTurnResponse.state == 'run')
         {
+            console.log("here1");
             for(var i=0;i<gameRoom.players.length;i++)
             {
+                console.log("i: "+i);
+                console.log("gameRoom.turnOWner: "+gameRoom.turnOWner);
                 if(gameRoom.turnOWner == i)
                 {
+                    console.log("here2");
+                    console.log("gameRoom.players[i].userId: "+gameRoom.players[i].userId);
                     user.addToUserFeed(gameRoom.players[i].userId, 'TURN', roomKey, turn);    
                     break;
                 }
