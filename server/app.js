@@ -1,5 +1,6 @@
 var server = require("./server/server");
 var router = require("./server/router");
+var chatServer = require("./server/chat");
 
 //http handlers
 var base = require("./handlers/base");
@@ -22,3 +23,4 @@ handle["/getUserFeed"] = getUserFeed.getUserFeed;
 handle["/playTurn"] = playTurn.playTurn;
 
 server.start(router.route, handle);
+chatServer.start();

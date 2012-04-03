@@ -41,7 +41,6 @@ body {
 }
 .player1
 {
-	margin-top: 520px;
 	height: 50px;
 	text-align:bottom;
 	width: 350px;
@@ -119,8 +118,8 @@ body {
 	    token = response.authResponse.accessToken;
 	    FB.api('/me', function(response) {
 	    	console.log(JSON.stringify(response));
-		start(response.name);
-		//top.window.location = 'https://www.facebook.com/dialog/oauth/?client_id=329867790409871&redirect_uri=http://apps.facebook.com/ticky_tacky_toe/';
+		    start(response.name);
+            initChat(response.name);
 	    });
 	  }
 	  else
@@ -176,7 +175,12 @@ body {
 			<div class="player1">
 				<p id="nameTag1"> Remzi 2 </p>
 			</div>
-		</div>
+            <div id="chatContent"></div>
+                <div>
+                    <span id="status">Connecting...</span>
+                    <input type="text" id="input" disabled="disabled" />
+                </div>
+		    </div>
 	</div>
 	<div class="console" id="console">
 		<!--<p>init page.</p>-->
@@ -189,6 +193,7 @@ body {
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tictactoe.js"></script>
+<script src="js/chat.js"></script>
 
 </body>
 </html>
