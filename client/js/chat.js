@@ -114,7 +114,7 @@ $(function () {
              + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
              + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
              + ': ' + message + '</p>');
-        content.animate({ scrollTop: content.attr("scrollHeight") - content.height() }, 3000);
+        content.animate({ scrollTop: content.prop("scrollHeight") - content.height() }, 3000);
         
     }
 });
