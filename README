@@ -2,8 +2,6 @@ OyunJS
 
 OyunJS is an experiment going on with node.js to build a turn-based game server, which supports extensions.
 
-OyunJS is currently maintained by <Remzi Senel> remzisenel (at) gmail (dot) com
-
 A basic/sample extension (Tic Tac Toe) could be found under server/extensions/tictactoe.js.
 
 I'm really sorry about the poor comments (in other words, none)!
