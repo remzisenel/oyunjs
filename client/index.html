@@ -9,6 +9,14 @@
 body {
  background-color : #55948C;
 }
+* { font-family:tahoma; font-size:12px; padding:0px; margin:0px; }
+p { line-height:18px; }
+.chatContent { width:500px; margin-left:auto; margin-right:auto;}
+#chatContent { padding:5px; background:#ddd; border-radius:5px;
+           border:1px solid #CCC; margin-top:10px; }
+#input { border-radius:2px; border:1px solid #ccc;
+         margin-top:10px; padding:5px; width:400px;  }
+#status { width:88px; display:block; float:left; margin-top:15px; }
 .console
 {
 	float: none;
@@ -174,12 +182,14 @@ body {
 			<div class="player1">
 				<p id="nameTag1"> Remzi 2 </p>
 			</div>
-            <div id="chatContent"></div>
+            <div class="chatContainer">
+                <div id="chatContent" class="chatContent"></div>
                 <div>
                     <span id="status">Connecting...</span>
                     <input type="text" id="input" disabled="disabled" />
                 </div>
-		    </div>
+            </div>
+	    </div>
 	</div>
 	<div class="console" id="console">
 		<!--<p>init page.</p>-->
