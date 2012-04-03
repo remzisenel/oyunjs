@@ -84,7 +84,7 @@ function logout(userId)
     var roomKey = userIdRoomMap[userId];
     var gameRoom = room.getRoom(roomKey);
     room.setState(roomKey, 'halt');
-    for(var i=0;i<gameRoom.players.length;i++)
+    for(var i=0;gameRoom && i<gameRoom.players.length;i++)
     {
         if(gameRoom.players[i].userId != userId)
         {
