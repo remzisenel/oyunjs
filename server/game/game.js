@@ -154,6 +154,7 @@ function playTurn(userId, roomKey, turn)
 
 function tick(extension)
 {
+    console.log('tick');
     matchUsers(extension);
     setTimeout(function(){tick(extension);},ticktimer);    
 }
