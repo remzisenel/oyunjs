@@ -38,6 +38,8 @@ for(var ext_i = 0;ext_i<ext_extList.length;ext_i++)
 function matchUsers(extension)
 {
     var users = user.getUsersWaitingRandomMatch();
+    //randomize users
+    users.sort(function(a,b) { return Math.random() > 0.5; } );
     var maxPlayers = extensions[extension].maxPlayers;
     var players = [];
     var playerCount = 0;
