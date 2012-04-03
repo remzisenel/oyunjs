@@ -114,19 +114,4 @@ $(function () {
              + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
              + ': ' + message + '</p>');
     }
-    
-    function initChat(msg)
-    {
-        var msg = $(this).val();
-        // send the message as an ordinary text
-        connection.send(msg);
-        $(this).val('');
-        // disable the input field to make the user wait until server
-        // sends back response
-        input.attr('disabled', 'disabled');
-        // we know that the first message sent from a user their name
-        if (myName === false) {
-            myName = msg;
-        }
-    }
 });
