@@ -1,10 +1,15 @@
+var name = '';
+
+function setChatName(chatName)
+{
+    name = chatName;
+}
 $(function () {
     "use strict";
 
     // for better performance - to avoid searching in DOM
     var content = $('#chatContent');
     var input = $('#input');
-    var status = $('#status');
 
     // my color assigned by the server
     var myColor = false;
@@ -29,7 +34,6 @@ $(function () {
     connection.onopen = function () {
         // first we want users to enter their names
         input.removeAttr('disabled');
-        status.text('Choose name:');
     };
 
     connection.onerror = function (error) {
@@ -54,7 +58,6 @@ $(function () {
         // check the server source code above
         if (json.type === 'color') { // first response from the server with user's color
             myColor = json.data;
-            status.text(myName + ': ').css('color', myColor);
             input.removeAttr('disabled').focus();
             // from now user can start sending messages
         } else if (json.type === 'history') { // entire message history
@@ -77,6 +80,11 @@ $(function () {
      */
     input.keydown(function(e) {
         if (e.keyCode === 13) {
+            if (myName === false) {
+                // we know that the first message sent from a user their name
+                connection.send(name);
+                myName = name;
+            }
             var msg = $(this).val();
             // send the message as an ordinary text
             connection.send(msg);
@@ -84,11 +92,6 @@ $(function () {
             // disable the input field to make the user wait until server
             // sends back response
             input.attr('disabled', 'disabled');
-
-            // we know that the first message sent from a user their name
-            if (myName === false) {
-                myName = msg;
-            }
         }
     });
 
@@ -99,7 +102,6 @@ $(function () {
      */
     setInterval(function() {
         if (connection.readyState !== 1) {
-            status.text('Error');
             input.attr('disabled', 'disabled').val('Unable to comminucate '
                                                  + 'with the WebSocket server.');
         }
